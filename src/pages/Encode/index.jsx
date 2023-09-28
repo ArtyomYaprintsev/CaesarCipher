@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { encodeText } from "../../utils/caesarCipher";
-
 import HintList from "../../components/HintList";
 import ResultPopup from "../../components/ResultPopup";
+
+import { encodeText } from "../../utils/caesarCipher";
 
 import "../../assets/encode.scss";
 
@@ -82,11 +82,11 @@ const EncodePage = () => {
           />
 
           {errors.plainText && (
-            <pre style={{ color: "red" }}>{errors.plainText.message}</pre>
+            <span role='alert'>{errors.plainText.message}</span>
           )}
         </div>
 
-        <input type='submit' value='Submit' disabled={cipherValue} />
+        <input type='submit' value='Submit' disabled={!!cipherValue} />
       </form>
 
       <ResultPopup

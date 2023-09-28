@@ -3,9 +3,11 @@ import { useForm } from "react-hook-form";
 
 import HintList from "../../components/HintList";
 import ResultPopup from "../../components/ResultPopup";
+import CipherInputWrapper from "../../components/CipherInputWrapper";
+
+import { decodeText } from "../../utils/caesarCipher";
 
 import "../../assets/decode.scss";
-import { decodeText } from "../../utils/caesarCipher";
 
 const DecodePage = () => {
   const [plainTextValue, setPlainTextValue] = useState(null);
@@ -17,7 +19,7 @@ const DecodePage = () => {
   } = useForm({});
 
   const submitForm = (data) => {
-    setPlainTextValue(decodeText(data.cipherText, data.encodeShift));
+    setPlainTextValue(decodeText(data.cipherText, data.decodeShift));
   };
 
   return (
@@ -53,36 +55,9 @@ const DecodePage = () => {
           )}
         </div>
 
-        <div className='input-wrapper'>
-          <label htmlFor='cipher-text' className='required'>
-            Cipher text:
-          </label>
-          <textarea
-            id='cipher-text'
-            {...register("cipherText", {
-              required: "The cipher text is required.",
-              pattern: {
-                value:
-                  /^(?:(?:[A-Za-zА-Яа-яЁё]{5})[-\s])+[A-Za-zА-Яа-яЁё]{1,5}\s?$/gm,
-                message: "Invalid cipher value, check hints.",
-              },
-            })}
-          />
+        <CipherInputWrapper register={register} errors={errors} />
 
-          <HintList
-            hints={[
-              "Cipher text must be in groups of 5 characters (excluding the last group), separated by a '-' sign or a space.",
-              "Cipher can only contains letters og the Russian and Latin alphabets.",
-              "Result will be returned in upper case.",
-            ]}
-          />
-
-          {errors.cipherText && (
-            <span role='alert'>{errors.cipherText.message}</span>
-          )}
-        </div>
-
-        <input type='submit' value='Submit' disabled={plainTextValue} />
+        <input type='submit' value='Submit' disabled={!!plainTextValue} />
       </form>
 
       <ResultPopup
