@@ -19,6 +19,12 @@ ol {
 }
 
 body {
+  @media screen and (max-width: 800px) {
+    background-color: $main-bg-color;
+  }
+}
+
+body {
   font-size: 22px;
 
   @media screen and (max-width: 1440px) and (min-width: 1025px) {

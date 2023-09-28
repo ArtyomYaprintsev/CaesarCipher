@@ -1,0 +1,51 @@
+@import "mixins";
+@import "variables";
+
+.page {
+  @include root-child();
+
+  padding-top: 1em;
+  padding-bottom: 50px;
+
+  & > .description {
+    margin-bottom: 20px;
+  }
+
+  form {
+    .input-wrapper {
+      padding-bottom: 20px;
+
+      label {
+        font-weight: bold;
+      }
+
+      .hint-list {
+        list-style-type: disc;
+        padding-left: 2em;
+        margin: 10px 0;
+
+        &::before {
+          content: "Hints:";
+          display: block;
+
+          margin-left: -2em;
+        }
+      }
+
+      span[role="alert"] {
+        color: $red-color;
+      }
+    }
+
+    & > input[type="submit"] {
+      width: 100%;
+      max-width: 150px;
+      padding: 0.5em 0;
+    }
+  }
+
+  input,
+  textarea {
+    background-color: $input-bg;
+  }
+}
