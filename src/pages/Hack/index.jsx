@@ -22,7 +22,15 @@ const HackPage = () => {
 
   return (
     <div className='hack-page page'>
-      <div className='description'>Hack description</div>
+      <div className='description'>
+        The code is suitable for hacking a cipher that has been encrypted using
+        the "Caesar Cipher". For hacking, "The Least Square" method and data
+        from the table "Frequency of letters of the Russian alphabet" are used.
+        <br />
+        Код подходит для взлома шифра, который был получен методом "Шифр
+        Цезаря". Для взлома используется метод наименьших квадратов и данные из
+        таблицы "Частота использования букв русского алфавита".
+      </div>
       <form className='hack-form' onSubmit={handleSubmit(submitForm)}>
         <CipherInputWrapper isRuOnly register={register} errors={errors} />
 

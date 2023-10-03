@@ -23,7 +23,14 @@ const EncodePage = () => {
 
   return (
     <div className='encode-page page'>
-      <div className='description'>Encode description</div>
+      <div className='description'>
+        The Caesar Cipher is used for encryption. The method "moves” all the
+        letters of the plain text by the specified shift to obtain the cipher.
+        <br />
+        Для зашифрования используется Шифр Цезаря, который для получения шифра
+        "сдвигает" все буквы изначального сообщения на указанную величину
+        сдвига.
+      </div>
       <form className='encode-form' onSubmit={handleSubmit(submitForm)}>
         <div className='input-wrapper'>
           <label htmlFor='encode-shift' className='required'>

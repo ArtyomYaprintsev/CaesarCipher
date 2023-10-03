@@ -24,6 +24,16 @@ const DecodePage = () => {
 
   return (
     <div className='decode-page page'>
+      <div className='description'>
+        The Caesar Cipher is used for decryption. The method "moves” all the
+        letters of the given cipher by the specified shift to obtain the plain
+        text (the decryption shift must be equal to the encryption shift).
+        <br />
+        Для расшифрования используется Шифр Цезаря, который для получения
+        изначального сообщения "сдвигает" все буквы шифра на указанную величину
+        сдвига (сдвиг должен быть равен сдвигу, указанному при зашифровке).
+      </div>
+
       <div className='description'>Decode description</div>
       <form className='decode-form' onSubmit={handleSubmit(submitForm)}>
         <div className='input-wrapper'>
