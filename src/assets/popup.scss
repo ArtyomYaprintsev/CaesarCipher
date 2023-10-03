@@ -19,8 +19,20 @@
   $vertical-pad: 1em;
   $horizontal-pad: 2em;
 
-  .popup-container {
+  .close-popup-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
     z-index: 999;
+
+    background-color: transparent;
+  }
+
+  .popup-container {
+    z-index: 1000;
 
     max-width: min(850px, 90%);
     max-height: 60%;

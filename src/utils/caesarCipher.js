@@ -26,16 +26,17 @@ const shiftLetter = (letter, latinShift, russianShift) => {
     throw new Error("Invalid letter given.");
   }
 
+  let letterAlphabet = LATIN_STRING;
+  let letterShift = latinShift;
+
   if (LETTER_STAFF[letter].isRussian) {
-    return RUSSIAN_STRING[
-      (LETTER_STAFF[letter].index + russianShift + RUSSIAN_STRING.length) %
-        RUSSIAN_STRING.length
-    ];
+    letterAlphabet = RUSSIAN_STRING;
+    letterShift = russianShift;
   }
 
-  return LATIN_STRING[
-    (LETTER_STAFF[letter].index + latinShift + LATIN_STRING.length) %
-      LATIN_STRING.length
+  return letterAlphabet[
+    (LETTER_STAFF[letter].index + letterShift + letterAlphabet.length) %
+      letterAlphabet.length
   ];
 };
 
