@@ -1,8 +1,12 @@
-# React + Vite
+# Caesar Cipher
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The project was written as part of the Math course and contains pages for encryption, decryption and hacking with ["Caesar Cipher"](https://en.wikipedia.org/wiki/Caesar_cipher) method.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone this git repository.
+2. Install dependencies `npm install`.
+
+## Service preview
+
+The current service version hosted at [this link](https://caesar-cipher-omega.vercel.app/).
