@@ -10,28 +10,27 @@ import { getLetterFrequency } from "./letterFrequencies";
 const prepareTextToShift = (text) => {
   return text
     .toUpperCase()
-    .replaceAll("Ё", "$1E")
+    .replaceAll("Ё", "$1Е")
     .replace(/[^A-ZА-Я]/g, "");
 };
 
 /**
  *
  * @param {string} letter
- * @param {number} latinShift
- * @param {number} russianShift
+ * @param {number} shift
  * @returns shifted in related alphabet letter.
  */
-const shiftLetter = (letter, latinShift, russianShift) => {
+const shiftLetter = (letter, shift) => {
   if (!LETTER_STAFF[letter]) {
     throw new Error("Invalid letter given.");
   }
 
   let letterAlphabet = LATIN_STRING;
-  let letterShift = latinShift;
+  let letterShift = shift % LATIN_STRING.length;
 
   if (LETTER_STAFF[letter].isRussian) {
     letterAlphabet = RUSSIAN_STRING;
-    letterShift = russianShift;
+    letterShift = shift % RUSSIAN_STRING.length;
   }
 
   return letterAlphabet[
@@ -47,11 +46,8 @@ const shiftLetter = (letter, latinShift, russianShift) => {
  * @returns shifted the given string on the given shift.
  */
 const shiftText = (text, shift) => {
-  const latinShift = shift % LATIN_STRING.length;
-  const russianShift = shift % RUSSIAN_STRING.length;
-
   return Array.from(text)
-    .map((letter) => shiftLetter(letter, latinShift, russianShift))
+    .map((letter) => shiftLetter(letter, shift))
     .join("");
 };
 
@@ -137,14 +133,13 @@ const findShift = (cipherFrequency) => {
           prev +
           Math.pow(
             getLetterFrequency(cur) -
-              (cipherFrequency[shiftLetter(cur, 0, shift)] ?? 0),
+              (cipherFrequency[shiftLetter(cur, shift)] ?? 0),
             2
           )
         );
       }, 0)
   );
 
-  console.log("shifts", shifts);
   return shifts.indexOf(Math.min.apply(null, shifts));
 };
 
