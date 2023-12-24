@@ -8,7 +8,10 @@ import "../../assets/hack.scss";
 import { hackCipher } from "../../utils/caesarCipher";
 
 const HackPage = () => {
-  const [plainTextValue, setPlainTextValue] = useState(null);
+  const [hacked, setHacked] = useState({
+    shift: 0,
+    hackedText: null,
+  });
 
   const {
     handleSubmit,
@@ -17,7 +20,7 @@ const HackPage = () => {
   } = useForm({});
 
   const submitForm = (data) => {
-    setPlainTextValue(hackCipher(data.cipherText));
+    setHacked(hackCipher(data.cipherText));
   };
 
   return (

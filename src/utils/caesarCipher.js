@@ -166,15 +166,14 @@ export const decodeText = (cipherText, shift = 0) => {
 /**
  *
  * @param {string} cipherText
- * @returns hacked decoded by the Caesar Cipher method text.
+ * @returns hacked shift and hacked decoded by the Caesar Cipher method text.
  */
 export const hackCipher = (cipherText) => {
   const preparedText = prepareTextToShift(cipherText);
+  const shift = findShift(getLetterFrequenciesInText(preparedText));
 
-  return formatText(
-    shiftText(
-      preparedText,
-      -1 * findShift(getLetterFrequenciesInText(preparedText))
-    )
-  );
+  return {
+    shift,
+    hackedText: formatText(shiftText(preparedText, -1 * shift)),
+  };
 };
