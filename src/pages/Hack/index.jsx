@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import Result from "../../components/Result";
 import CipherInputWrapper from "../../components/CipherInputWrapper";
-import ResultPopup from "../../components/ResultPopup";
 
 import "../../assets/hack.scss";
 import { hackCipher } from "../../utils/caesarCipher";
@@ -34,13 +34,14 @@ const HackPage = () => {
       <form className='hack-form' onSubmit={handleSubmit(submitForm)}>
         <CipherInputWrapper isRuOnly register={register} errors={errors} />
 
-        <input type='submit' value='Submit' disabled={!!plainTextValue} />
-      </form>
+        {hacked.hackedText && (
+          <Result text={hacked.hackedText}>
+            <span>{`Hacked cipher shift: ${hacked.shift}`}</span>
+          </Result>
+        )}
 
-      <ResultPopup
-        resultValue={plainTextValue}
-        onClose={plainTextValue ? () => setPlainTextValue(null) : () => {}}
-      />
+        <input type='submit' value='Submit' />
+      </form>
     </div>
   );
 };

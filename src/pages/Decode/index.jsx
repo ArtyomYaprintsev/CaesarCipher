@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import HintList from "../../components/HintList";
-import ResultPopup from "../../components/ResultPopup";
+import Result from "../../components/Result";
 import CipherInputWrapper from "../../components/CipherInputWrapper";
 
 import { decodeText } from "../../utils/caesarCipher";
@@ -67,13 +67,10 @@ const DecodePage = () => {
 
         <CipherInputWrapper register={register} errors={errors} />
 
-        <input type='submit' value='Submit' disabled={!!plainTextValue} />
-      </form>
+        {plainTextValue && <Result text={plainTextValue} />}
 
-      <ResultPopup
-        resultValue={plainTextValue}
-        onClose={plainTextValue ? () => setPlainTextValue(null) : () => {}}
-      />
+        <input type='submit' value='Submit' />
+      </form>
     </div>
   );
 };
