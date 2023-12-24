@@ -12,7 +12,6 @@ import DecodePage from "./pages/Decode";
 import HackPage from "./pages/Hack";
 
 import "./assets/header.scss";
-import "./assets/popup.scss";
 import "./assets/page.scss";
 
 function App() {

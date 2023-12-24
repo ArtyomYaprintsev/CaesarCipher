@@ -7,8 +7,6 @@ import CipherInputWrapper from "../../components/CipherInputWrapper";
 
 import { decodeText } from "../../utils/caesarCipher";
 
-import "../../assets/decode.scss";
-
 const DecodePage = () => {
   const [plainTextValue, setPlainTextValue] = useState(null);
 
@@ -28,6 +26,7 @@ const DecodePage = () => {
         The Caesar Cipher is used for decryption. The method "moves” all the
         letters of the given cipher by the specified shift to obtain the plain
         text (the decryption shift must be equal to the encryption shift).
+        <br />
         <br />
         Для расшифрования используется Шифр Цезаря, который для получения
         изначального сообщения "сдвигает" все буквы шифра на указанную величину

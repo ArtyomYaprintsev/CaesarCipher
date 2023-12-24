@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import Result from "../../components/Result";
 import CipherInputWrapper from "../../components/CipherInputWrapper";
 
-import "../../assets/hack.scss";
 import { hackCipher } from "../../utils/caesarCipher";
 
 const HackPage = () => {
@@ -30,10 +29,12 @@ const HackPage = () => {
         the "Caesar Cipher". For hacking, "The Least Square" method and data
         from the table "Frequency of letters of the Russian alphabet" are used.
         <br />
+        <br />
         Код подходит для взлома шифра, который был получен методом "Шифр
         Цезаря". Для взлома используется метод наименьших квадратов и данные из
         таблицы "Частота использования букв русского алфавита".
       </div>
+
       <form className='hack-form' onSubmit={handleSubmit(submitForm)}>
         <CipherInputWrapper isRuOnly register={register} errors={errors} />
 

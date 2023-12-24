@@ -6,8 +6,6 @@ import Result from "../../components/Result";
 
 import { encodeText } from "../../utils/caesarCipher";
 
-import "../../assets/encode.scss";
-
 const EncodePage = () => {
   const [cipherValue, setCipherValue] = useState(null);
 
@@ -26,6 +24,7 @@ const EncodePage = () => {
       <div className='description'>
         The Caesar Cipher is used for encryption. The method "moves” all the
         letters of the plain text by the specified shift to obtain the cipher.
+        <br />
         <br />
         Для зашифрования используется Шифр Цезаря, который для получения шифра
         "сдвигает" все буквы изначального сообщения на указанную величину

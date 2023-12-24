@@ -11,6 +11,20 @@
     margin-bottom: 20px;
   }
 
+  .result-wrapper {
+    margin-bottom: 20px;
+
+    h3 {
+      margin: 0;
+    }
+
+    .text {
+      padding: 0.5em;
+      border: 1px solid $input-bg;
+      margin-bottom: 0.5em;
+    }
+  }
+
   form {
     .input-wrapper {
       padding-bottom: 20px;
