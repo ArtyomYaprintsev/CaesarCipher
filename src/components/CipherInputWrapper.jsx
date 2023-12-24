@@ -13,7 +13,12 @@ const CipherInputWrapper = ({ register, errors, isRuOnly }) => {
         {...register("cipherText", {
           required: "The cipher text is required.",
           validate: {
-            checkAlphabet: (value) => {
+            checkNotAllowedCharacters: (value) => {
+              if (/[^A-ZА-Я-\s]/.test(value)) {
+                return "Cipher can to contain only russian or latin characters in upper case, a `-` sign or a space";
+              }
+            },
+            checkOnlyRussianLetters: (value) => {
               const isContainLatinCharacters = /[a-z]/i.test(value);
 
               if (isRuOnly && isContainLatinCharacters) {
@@ -27,9 +32,7 @@ const CipherInputWrapper = ({ register, errors, isRuOnly }) => {
       <HintList
         hints={[
           "Cipher text must be in groups of n characters (excluding the last group), separated by a '-' sign or a space.",
-          `Cipher can only contains letters of the ${
-            isRuOnly ? "Russian alphabet" : "Russian and Latin alphabets"
-          }.`,
+          "Letters must be used in upper case",
           "Result will be returned in upper case.",
         ]}
       />

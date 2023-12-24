@@ -64,26 +64,14 @@ const EncodePage = () => {
             id='plain-text'
             {...register("plainText", {
               required: "The plain text is required.",
-              validate: {
-                notContainNumbers: (val) => {
-                  const isContainNumbers = /\d/.test(val);
-
-                  if (isContainNumbers) {
-                    return "The plain text can not to contain numbers.";
-                  }
-
-                  return !isContainNumbers;
-                },
-              },
             })}
           />
 
           <HintList
             hints={[
               "Use only letters of the Russian and Latin alphabets, other letters will be removed.",
-              "Write numbers using words (for example, '1' - 'one').",
               "All non-letter characters will be removed.",
-              "'Ё' letter will be replaced by 'Е'.",
+              "'Ё' letter will be replaced with 'Е'.",
               "Result will be returned in upper case.",
             ]}
           />
